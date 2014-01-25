@@ -35,4 +35,5 @@ After that you upload your plugin files. The plugin should be visible. All you h
 
 ## The files
 
-* mojn.php - simple hello world shortcode plugin.
+* Simple hello world shortcode plugin: https://github.com/asathoor/wpPlugins/blob/master/mojn.php
+* A $wpdb API sample https://github.com/asathoor/wpPlugins/blob/master/petjWpdbSample.php
