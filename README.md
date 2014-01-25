@@ -1,9 +1,9 @@
 wpPlugins
 =========
 
->> Plugins and widgets for the third semester multimedia designers
->> @ Business Academy Lillebaelt
->> Spring 2014
+> Plugins and widgets for the third semester multimedia designers
+> @ Business Academy Lillebaelt
+> Spring 2014
 
 ## A WordPress Primer
 The files in this repo are meant for multimedia students.
