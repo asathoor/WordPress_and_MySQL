@@ -1,4 +1,6 @@
 wpPlugins
 =========
 
-Some of my WordPress plugins
+Plugins and widgets for the third semester multimedia designers
+@ Business Academy Lillebaelt
+Spring 2014
