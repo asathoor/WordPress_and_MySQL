@@ -40,3 +40,4 @@ After that you upload your plugin files. The plugin should be visible. All you h
 | Simple hello world shortcode plugin |  https://github.com/asathoor/wpPlugins/blob/master/mojn.php |
 | A $wpdb API sample | https://github.com/asathoor/wpPlugins/blob/master/petjWpdbSample.php |
 | Shortcode sample: display current year or the actual date. |https://github.com/asathoor/wpPlugins/blob/master/petjYear.php |
+|Majesties and Spouses sql table samples|https://github.com/asathoor/wpPlugins/blob/master/petj_mmd_eal_dk.sql|
