@@ -12,7 +12,7 @@ WordPress (WP) is a CMS sample. Since WP is made by PHP and MySQL you can hack y
 
 On http://petj.mmdeal.dk you will find the relevant materials for the classes.
 
-### Install your plugin (easy)
+## Install your plugin (easy)
 
 The easy way to install your .php file
 
@@ -21,7 +21,7 @@ The easy way to install your .php file
 3. Choose from file.
 4. Install from your local file.
 
-### Install plugin via ftp (advanced)
+## Install plugin via ftp (advanced)
 
 If you ftp to WP the plugins are stored in:
 
@@ -39,4 +39,4 @@ After that you upload your plugin files. The plugin should be visible. All you h
 | ----------- | --- |
 | Simple hello world shortcode plugin |  https://github.com/asathoor/wpPlugins/blob/master/mojn.php |
 | A $wpdb API sample | https://github.com/asathoor/wpPlugins/blob/master/petjWpdbSample.php |
-| Shortcode sample (display current year) |https://github.com/asathoor/wpPlugins/blob/master/petjYear.php |
+| Shortcode sample: display current year or the actual date. |https://github.com/asathoor/wpPlugins/blob/master/petjYear.php |
