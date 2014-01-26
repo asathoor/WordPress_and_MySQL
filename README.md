@@ -1,7 +1,7 @@
 wpPlugins
 =========
 
-# Interaction 3rd Semester Spring 2014 
+## Interaction 3rd Semester Spring 2014 
 
 WordPress (WP) is a CMS sample. Since WP is made by PHP and MySQL you can hack your own extensions. The learning objectives are:
 
