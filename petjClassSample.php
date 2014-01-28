@@ -25,5 +25,5 @@ $ppp = new petjC();
 * How to fire off a function from a class instance
 **/
 
-$ppp::cpyrgt(); // should return a copyright string ...
+$ppp::cpyrgt(); // should return a string with the author name ...
 ?>
