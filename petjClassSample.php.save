@@ -1,0 +1,29 @@
+<?php
+
+/**
+* A PHP class sample
+**/
+
+class foo{
+
+	public $bar = 777;
+
+	public function pMinus(){
+		return "Hello";
+	}
+
+}
+
+/**
+* How to instantiate the class
+**/
+
+$petjFlip = new $foo;
+
+/**
+* How to fire off a function from a class instance
+**/
+
+$petjFlip->pMinus(111); // should return 666
+
+?>
