@@ -17,11 +17,6 @@ if ( have_posts() ) {
     }
 }
 
-// add sidebar
-php get_sidebar();
-
-
-
 wp_footer();
 
 ?>
