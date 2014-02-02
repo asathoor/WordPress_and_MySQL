@@ -5,6 +5,10 @@
 <body>
 
 <?php
+// a menu - simple page list
+wp_list_pages();
+
+// the loop
 if ( have_posts() ) {
     while ( have_posts() ) {
         the_post();
@@ -12,6 +16,11 @@ if ( have_posts() ) {
         the_content();
     }
 }
+
+// add sidebar
+php get_sidebar();
+
+
 
 wp_footer();
 
