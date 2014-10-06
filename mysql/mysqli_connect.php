@@ -22,7 +22,7 @@
 <h1>PHP and MySQL</h1>
 
 <?php
-$mysqli = new mysqli("localhost", "username", "password","database");
+$mysqli = new mysqli("localhost", "user", "password","middleearth");
 if ($mysqli->connect_errno) {
     echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }
@@ -159,6 +159,7 @@ while($row = $result->fetch_assoc()){
 <form action="mysqli_connect.php" method="post">
 	First Name <input type="text" name="firstName"><br>
 	Last Name <input type="text" name="lastName"><br>
+	Address <input type="text" name="address"><br>
 	<input type="submit" name="submit" value="submit"><button name="Cancel" value="Cancel" type="reset">Cancel</button>
 </form>
 
@@ -166,7 +167,36 @@ while($row = $result->fetch_assoc()){
 	<?
 	
 	if($_POST) { 
-		print($_POST['firstName'] . " " . $_POST['lastName']); // print out what's in the form.
+		/*
+		if(isset($mysqli)) {
+			echo "OK ----------<br>";
+		}		
+		*/
+		
+		// print($_POST['firstName'] . " " . $_POST['lastName']); // print out what's in the form.
+		
+		// store input in vars
+		$fn = $_POST['firstName'];
+		$ln = $_POST['lastName'];
+		$adr = $_POST['address'];	
+		
+		// security ...	
+		
+		// change sql 
+		// Nb. only the table not the db name in this case		
+		
+		//$sql2 = "INSERT INTO hobbitses (`id`,`firstName`, `lastName`, `addr`) VALUES (NULL, 'Greg', 'Hinterseher', 'Cassel');";
+		$sql2 = "INSERT INTO hobbitses (`id`,`firstName`, `lastName`, `addr`) VALUES (NULL, '$fn', '$ln', '$adr');";
+		
+		// Query
+		$insert = $mysqli->query($sql2);	
+		
+		if ($mysqli->connect_errno) {
+    echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+}
+echo $mysqli->host_info . "\n";		
+		
+		print("<br>The SQL sentence: " . $sql2);
 	}
 	else {
 		print("<span style='color:red'>You may want to insert a hobbit name above.</span>");
@@ -224,7 +254,7 @@ while($row = $result->fetch_assoc()){
 
 <?
 // close connection
-$result->close();
+//$result->close();
 ?>
 </body>
 </html>

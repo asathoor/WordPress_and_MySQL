@@ -164,10 +164,13 @@ while($row = $result->fetch_assoc()){
 
 <blockquote>
 	<?
-	
+	echo "--------------------"
 	if($_POST) { 
-		print($_POST['firstName'] . " " . $_POST['lastName']); // print out what's in the form.
+		print("Insert: " . $_POST['firstName'] . " " . $_POST['lastName']); // print out what's in the form.
+		// insert sql as php code
+		
 	}
+	
 	else {
 		print("<span style='color:red'>You may want to insert a hobbit name above.</span>");
 	} 
