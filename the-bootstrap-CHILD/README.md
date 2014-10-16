@@ -2,7 +2,8 @@ THE BOOTSTRAP CHILD THEME
 =========================
 
 A child theme sample. 
-In order to run it you must install "The-bootstrap" theme from the repositories.
+In order to run it you must install "The-bootstrap" theme by Konstantin Obenland from the repositories.
+URL: https://wordpress.org/themes/the-bootstrap
 
 The purpose of the pages is to demonstrate:
 
