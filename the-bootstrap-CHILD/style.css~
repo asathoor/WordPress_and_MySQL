@@ -1,0 +1,20 @@
+/*
+ Theme Name:   PETJ Bootstrap Theme Child
+ Theme URI:    http://localhost/
+ Description:  A responsive theme based on bootstrap by Twitter
+ Author:       Per Thykjaer Jensen, MA
+ Author URI:   http://multimusen.dk
+ Template:     the-bootstrap
+
+ Version:      1.0.0
+ Tags:         bootstrap, responsive
+ Text Domain:  the-bootstrap-CHILD
+*/
+
+
+/* =Theme customization starts here
+-------------------------------------------------------------- */
+
+/* 
+NB: import parent styles.css via enqueue.
+*/
