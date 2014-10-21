@@ -10,9 +10,9 @@ require_once('db.php'); // the mysqli object
 $delete = $_GET['delete'];
 
 /*** 
-NB: Fails because of a foreign key constraint error.
+NB: Delete fails because of a foreign key constraint error.
 
---- SOLUTION ---
+--- WORKAROUND ---
 
 1. Go to the table film_actor
 2. -> Structure -> Relations
