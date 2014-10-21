@@ -1,0 +1,26 @@
+<?php
+/* Style sheets (new recommendation) */
+add_action( 'wp_enqueue_scripts', 'enqueue_child_theme_styles', PHP_INT_MAX);
+function enqueue_child_theme_styles() {
+    wp_enqueue_style( 'parent-style', get_template_directory_uri().'/style.css' );
+    wp_enqueue_style( 'child-style', get_stylesheet_uri(), array('parent-style')  );
+}
+
+/* taxonomies */
+function people_init() {
+	// create a new taxonomy
+	register_taxonomy(
+		'people',
+		'post',
+		array(
+			'label' => __( 'People' ),
+			'rewrite' => array( 'slug' => 'person' ),
+			'capabilities' => array(
+				'assign_terms' => 'edit_guides',
+				'edit_terms' => 'publish_guides'
+			)
+		)
+	);
+}
+add_action( 'init', 'people_init' );
+?>
