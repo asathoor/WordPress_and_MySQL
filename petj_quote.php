@@ -11,22 +11,24 @@
 */
 
 /*
- * This function is hooked into the 'wp_dashboard_setup' action below.
- */
+* Copyritght License Url: http://www.gnu.org/licenses/gpl.txt
+*/
+
+/* Add pages (or rather functions) to the Dashboard. */
+
 function petj_quote_add_dashboard_widgets() {
 
 	wp_add_dashboard_widget(
                  'petj_quotes',         // Widget slug.
-                 'A Quote',         		// Title.
-                 'petj_write_quote' // Display function.
+                 'READ A Quote',        // Title.
+                 'petj_write_quote' 	// Display function.
         );	
 }
+
 $add_widget = add_action( 'wp_dashboard_setup', 'petj_quote_add_dashboard_widgets' );
 
 
-/* create table if it isn't present */
-
-check_quotes_table(); // Is the table present?
+/* CREATE table IF it isn't present */
 
 function check_quotes_table()
 {
@@ -96,26 +98,44 @@ function petj_write_quote() {
 	<?php 
 }
 
-/* Here we add something to the Dashboard toolbar */
+/* Here we add our quotes to the Dashboard Menu under "Settings" */
 
-add_action( 'admin_menu', 'petj_quotes_menu' );
+add_action( 'admin_menu', 'petj_quotes_menu' ); // here we add something to the settings menu, calls the function petj_quotes_menu
 
 function petj_quotes_menu(){
 	add_options_page(
-		'PETJ Quotes', 
-		'PETJ Add Quotes', 
-		'delete_posts', 
-		'petj_quote', 
-		'petj_add_quote');
+		'PETJ Quotes', // headline on the page created
+		'PETJ CREATE Quotes', // menu title
+		'delete_posts', // user ability check codex abilities
+		'petj_quote', // unique identifier for the menu
+		'petj_add_quote'); // the function to be fired off that will create the page content
+	add_options_page(
+		'PETJ Edit Quotes',
+		'PETJ UPDATE Quotes',
+		'delete_posts',
+		'petj_quote_edit',
+		'petj_edit_all_quotes'
+	);
+	add_options_page(
+		'PETJ Delete Quotes',
+		'PETJ DELETE Quotes',
+		'delete_posts',
+		'petj_quote_delete',
+		'petj_delete_quote'
+	);	
 }
 
+/* Other options */
 
-/*SQL INSERT */ 
+// You could create your own menu or simply add options to the tools page. 
+
+
+/* SQL INSERT */ 
 
 function petj_add_quote(){
 	?>
 	<div class="wrap">
-		<h3>Add a quote</h3>
+		<h3>Insert a quote</h3>
 		
 		<form action="" method="post" enctype="multipart/form-data">
 			<strong>Enter a quote</strong> <input type="text" name="quote"><br>
@@ -159,40 +179,12 @@ function petj_add_quote(){
 }
 
 
-/* MYSQL UPDATE */
-function petj_quotes_update($id){
-	$wpdb->update( 
-	'wp_quotes', 
-	array( 
-		'id' => NULL,	// int
-		'quote' => $_POST['quote'],	// str
-		'author' => $_POST['author']
-	), 
-	array( 'ID' => $id ), 
-	array( 
-		'%d',	// value1
-		'%s',	// value2
-		'%s'
-	), 
-	array( '%d' ) 
-	);
-}
+/* READ all quotes & UPDATE */
 
+// add subpage to the menu ... see above.
 
-/* MYSQL DELETE */
-function petj_quotes_delete($id){
-	$wpdb->delete(
-	 	'wp_quotes',
-	 	array('id' => $id),
-	 	array('%d')
-	 );
-}
-
-/* Edit page to Dashboard Menu */
-
-
-/* READ all quotes */
-function petj_echo_all_quotes(){
+function petj_edit_all_quotes(){
+		
 	global $wpdb;
 
 	$sql = "select count(`petj_id`) from wp_quotes"; // count the number of rows in the table
@@ -202,8 +194,32 @@ function petj_echo_all_quotes(){
 
 	print "
 	<div class='wrap'>
-	<h3>Update or delete quotes</h3>
+	<h3>Update Quote</h3>
 	";
+
+/* the update class
+
+
+*/
+
+	if (isset($_POST['quoteUpdateId'])) {
+		echo "Updating";
+
+		$wpdb->update( 
+		'wp_quotes', 
+		array(
+			'petj_quote' => $_POST['quoteUpdateQuote'],
+			'petj_author' => $_POST['quoteUpdateAuthor']
+		), 
+		array( 'petj_id' => $_POST['quoteUpdateId'] ), 
+		array(
+			'%s',
+			'%s'
+		), 
+		array( '%d' ) 
+		);
+	}
+
 
 	foreach( $wpdb->get_results($quote_sql) as $key => $row) {
 	// each column in your row will be accessible like this
@@ -214,10 +230,10 @@ function petj_echo_all_quotes(){
 	print 	'<div class="submitbox" style="margin-bottom:1.3em">
 			<form action="" method="post" enctype="multipart/form-data">
 			Quote no. ' . $row->petj_id . 
-			'<input type="hidden" name="quoteUpdate" value="' . $row->petj_id . ' " size="3"><br>
+			'<input type="hidden" name="quoteUpdateId" value="' . $row->petj_id . ' " size="3"><br>
 			<input type="text" name="quoteUpdateQuote" value="' . $row->petj_quote . ' " size="75"><br>
 			<input type="text" name="quoteUpdateAuthor" value="' . $row->petj_author .  '" size="30"><br>
-			<input type="submit" name="quoteUpdateSubmit" value="UpdateSubmit">
+			<input type="submit" name="quoteUpdateSubmit" value="Update">
 			</form>
 			</div>'; 
 	}
@@ -225,5 +241,57 @@ function petj_echo_all_quotes(){
 	print_r($_POST['Update']);
 
 }
+
+
+/* DELETE a quote*/
+
+function petj_delete_quote(){
+		
+	global $wpdb;
+
+	$sql = "select count(`petj_id`) from wp_quotes"; // count the number of rows in the table
+	$num_quotes = $wpdb->query($sql); // execute the sql 
+
+	$quote_sql ="SELECT * FROM `wp_quotes` ORDER BY 'petj_author' ";
+
+	print "
+	<div class='wrap'>
+	<h3>Delete quote</h3>
+	";
+
+	if(isset($_POST['quoteDelete'])){
+
+		// javascript alert 
+		print '<script>
+				alert( "Deleted quote '
+			. $_POST['quoteDelete'] 
+			. '");
+			</script>';
+
+		// DELETE wpdb function
+		$wpdb->delete( 'wp_quotes', array( 'petj_id' =>  $_POST['quoteDelete']) );
+
+	}
+
+	foreach( $wpdb->get_results($quote_sql) as $key => $row) {
+	// each column in your row will be accessible like this
+
+	$row->petj_quote = stripcslashes($row->petj_quote); // the sanitizer adds slashes, before READ we strip them.
+	$row->petj_author = stripcslashes($row->petj_author);
+
+	print 	'<div class="submitbox" style="margin-bottom:1.3em">
+			<form action="" method="post" enctype="multipart/form-data">
+			Quote no. ' . $row->petj_id . 
+			'<input type="hidden" name="quoteDelete" value="' . $row->petj_id . ' " size="3"><br>
+			<input type="text" name="quoteDeleteQuote" value="' . $row->petj_quote . ' " size="75"><br>
+			<input type="text" name="quoteDeleteAuthor" value="' . $row->petj_author .  '" size="30"><br>
+			<input type="submit" name="quoteDeleteSubmit" value="Delete">
+			</form>
+			</div>'; 
+	}
+}
+	
+
+
 
 ?>
