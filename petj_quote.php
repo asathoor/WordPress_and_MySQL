@@ -10,9 +10,9 @@
 * License: GPL3
 */
 
-/*
+/**
 * Copyritght License Url: http://www.gnu.org/licenses/gpl.txt
-*/
+**/
 
 /* Add pages (or rather functions) to the Dashboard. */
 
