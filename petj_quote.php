@@ -86,7 +86,11 @@ function petj_echo_quote(){
 /* form to INSERT a new quote */
 
 function petj_write_quote() {
+	// create the database tables and insert sample
+	check_quotes_table();
+
 	?> <!-- escapes php now you can enter HTML --> 
+
 
 	<!-- one random quote -->
 	<div class="wrap">
