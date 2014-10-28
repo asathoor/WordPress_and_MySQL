@@ -86,8 +86,8 @@ function petj_echo_quote(){
 /* form to INSERT a new quote */
 
 function petj_write_quote() {
-	// create the database tables and insert sample
-	check_quotes_table();
+
+	check_quotes_table(); // creates table if it does not exist
 
 	?> <!-- escapes php now you can enter HTML --> 
 
