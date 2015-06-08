@@ -1,7 +1,7 @@
 wpPlugins
 =========
 
-## Interaction 3rd Semester Spring 2014 
+## Interaction 3rd Semester Multimedia Design and Communication
 
 WordPress (WP) is a CMS sample. Since WP is made by PHP and MySQL you can hack your own extensions. The learning objectives are:
 
@@ -45,3 +45,4 @@ After that you upload your plugin files. The plugin should be visible. All you h
 |Folder: Weather|Ajax / Json sample plugin ("data from third part")|
 |WP API: $pwdb insert sample|https://github.com/asathoor/wpPlugins/blob/master/petjWpdbUpdate.php|
 |Random quote for the Dashboard. Demonstrates how to add Dashboard Widgets and basic CRUD functions via the $wpdb class|https://github.com/asathoor/wpPlugins/blob/master/petj_quote.php|
+|Editors|A shortcode READ'ing data from the WordPress database. In this case a simple list of registered users.|
