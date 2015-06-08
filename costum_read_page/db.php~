@@ -1,0 +1,4 @@
+<?php
+/* Connect to the sakila database */
+$mysqli = new mysqli("localhost", "root", "mojndo","sakila"); // creates the object
+?>
