@@ -33,6 +33,8 @@ while($row = $result->fetch_assoc()){
     echo $row['last_name']. '<br />';
    }
 
+mysqli_close($mysqli); 
+
 require_once('footer.php'); // html footer
 ?>
 
