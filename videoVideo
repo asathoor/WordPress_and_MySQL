@@ -1,0 +1,32 @@
+<?php
+/**
+ * Plugin Name: VideoVideo
+ * Plugin URI: http://https://github.com/asathoor/WordPress_and_MySQL/
+ * Description: A costum video player for your site.
+ * Version: 1.0
+ * Author: Per Thykjaer Jensen
+ * Author URI: http://www.multimusen.dk
+ * License: GPL3
+ */
+
+// link to video, image or other src: <?php bloginfo('template_directory'); ?>
+
+// skriver en videotag
+function videoVideo(  ){
+?>
+	<!-- from the videoVideo plugin by petj -->
+	<video controls style="width:640px;height:360px;" poster="<?php bloginfo
+
+('template_directory'); ?>/images/poster.png">
+	  <source src="<?php bloginfo('template_directory'); ?>/video/MYVIDEO.mp4" 
+          type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
+	</video>
+
+<?php
+}
+
+// implement shortcode
+add_shortcode( '[videoHer]', 'videoVideo' );
+
+
+?>
